@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Source_Sans_3 as FontSans } from "next/font/google";
+import { Readex_Pro as FontReadex } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/common/header";
+import Footer from "@/components/common/footer";
 
-const fontSans = FontSans({
-  variable: "--font-sans",
+const fontReadex = FontReadex({
+  variable: "--font-sans", // tüm projede varsayılan sans-serif bu olacak
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["200", "300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -21,8 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fontSans.variable} ${fontSans.variable} antialiased`}>
-        {children}
+      <body className={`${fontReadex.variable} font-sans antialiased`}>
+        <div className="relative flex min-h-screen flex-col">
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
